@@ -21,28 +21,54 @@
       <UniqueIdentifier>{639EADAA-A684-42e4-A9AD-28FC9BCB8F7C}</UniqueIdentifier>
       <Extensions>ts</Extensions>
     </Filter>
+    <Filter Include="Source Files\Logic">
+      <UniqueIdentifier>{4cd5f79c-1a3f-4a30-9e45-1d5d5f27effd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Logic">
+      <UniqueIdentifier>{57632cfc-6385-4dee-92dd-9295d2936294}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <QtRcc Include="Simplex_Method_GUI.qrc">
+    <QtRcc Include="Resource Files\Simplex_Method_GUI.qrc">
       <Filter>Resource Files</Filter>
     </QtRcc>
-    <QtUic Include="Simplex_Method_GUI.ui">
+  </ItemGroup>
+  <ItemGroup>
+    <QtUic Include="Form Files\Simplex_Method_GUI.ui">
       <Filter>Form Files</Filter>
     </QtUic>
-    <QtMoc Include="Simplex_Method_GUI.h">
-      <Filter>Header Files</Filter>
-    </QtMoc>
-    <ClCompile Include="Simplex_Method_GUI.cpp">
+  </ItemGroup>
+  <ItemGroup>
+    <ClCompile Include="Source Files\main.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ResourceCompile Include="$pro_name$.rc">
-    </ResourceCompile>
-    <None Include="$pro_name$.ico">
-      <Filter>Resource Files</Filter>
-    </None>
-    <None Include="$pro_name$.def">
-      <Filter>Resource Files</Filter>
-    </None>
-
+    <ClCompile Include="Source Files\Simplex_Method_GUI.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Logic\Matrix.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Logic\Maximization.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+    <ClCompile Include="Source Files\Logic\Minimization.cpp">
+      <Filter>Source Files\Logic</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Header Files\Logic\Matrix.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Logic\Maximization.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+    <ClInclude Include="Header Files\Logic\Minimization.h">
+      <Filter>Header Files\Logic</Filter>
+    </ClInclude>
+  </ItemGroup>
+  <ItemGroup>
+    <QtMoc Include="Header Files\Simplex_Method_GUI.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
   </ItemGroup>
 </Project>
