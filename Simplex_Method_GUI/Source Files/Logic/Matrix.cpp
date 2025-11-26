@@ -1,9 +1,9 @@
 ﻿#include "Matrix.h"
-#include <iostream>
 #include <cassert>
+#include <qdebug.h>
 
 // Constructor: inicializa todo a cero
-Matrix::Matrix(int n_vars, int n_rest, const std::string& obj){
+Matrix::Matrix(int& n_vars, int& n_rest){
     variables = n_vars;
     restrictions = n_rest;
     rows = n_rest + 1;
@@ -11,7 +11,7 @@ Matrix::Matrix(int n_vars, int n_rest, const std::string& obj){
     size_t total_size = static_cast<size_t>(rows) * static_cast<size_t>(cols);
     tabla.resize(total_size, 0);
     funcZ.resize(variables);
-    objetive = obj;
+    objetive = "";
 }
 
 // Para setter
@@ -64,8 +64,8 @@ void Matrix::set_restrictions(int idx, const std::vector<double>& coefs, double 
 void Matrix::print_matrix() const {
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
-            std::cout << "[" << at_b(i, j) << "]";
+            qDebug()<< "[" << at_b(i, j) << "]";
         }
-        std::cout << std::endl;
+        qDebug()<<"";
     }
 }

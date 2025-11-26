@@ -1,0 +1,16 @@
+<svg width="120" height="120" xmlns="http://www.w3.org/2000/svg">
+  <!-- Definir gradiente -->
+  <defs>
+    <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- Hexágono rotado 30° -->
+  <polygon points="60,15 90,35 90,70 60,90 30,70 30,35" 
+           fill="url(#grad1)" 
+           stroke="#2c3e50" 
+           stroke-width="0"
+           transform="rotate(0 60 60)"/>
+</svg>

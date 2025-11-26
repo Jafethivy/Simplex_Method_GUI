@@ -18,7 +18,7 @@ void pivoting_min(Matrix& m) {
 	col_iterate_min(m, piv_row, piv_col);
 }
 
-void fill_slack_min(Matrix& m) { // funciona
+void fill_slack_min(Matrix& m) {
 	fill_i_min(m);
 }
 void fill_j_min(int i, Matrix& m) {

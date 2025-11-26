@@ -14,9 +14,15 @@
     <QtRcc Include="Resource Files\Simplex_Method_GUI.qrc" />
   </ItemGroup>
   <ItemGroup>
+    <QtUic Include="Boxes.ui" />
     <QtUic Include="Form Files\Simplex_Method_GUI.ui" />
+    <QtUic Include="Objetive.ui" />
+    <QtUic Include="Setter.ui" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Boxes.cpp" />
+    <ClCompile Include="Objetive.cpp" />
+    <ClCompile Include="Setter.cpp" />
     <ClCompile Include="Source Files\Logic\Matrix.cpp" />
     <ClCompile Include="Source Files\Logic\Maximization.cpp" />
     <ClCompile Include="Source Files\Logic\Minimization.cpp" />
@@ -26,10 +32,16 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <QtMoc Include="Boxes.h" />
     <ClInclude Include="Header Files\Logic\Matrix.h" />
     <ClInclude Include="Header Files\Logic\Maximization.h" />
     <ClInclude Include="Header Files\Logic\Minimization.h" />
+    <QtMoc Include="Setter.h" />
+    <QtMoc Include="Objetive.h" />
     <QtMoc Include="Header Files\Simplex_Method_GUI.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <ProjectGuid>{CC9F02F1-C8D2-462C-9919-0770252DBAFB}</ProjectGuid>

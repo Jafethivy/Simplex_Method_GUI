@@ -1,4 +1,6 @@
 <RCC>
-    <qresource prefix="Simplex_Method_GUI">
+    <qresource prefix="/Simplex_Method_GUI">
+        <file>Simplex_Method_GUI.qrc</file>
+        <file>cuadrado.svg</file>
     </qresource>
 </RCC>

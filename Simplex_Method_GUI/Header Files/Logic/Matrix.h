@@ -15,7 +15,7 @@ private:
 
 public:
     //Constructor
-    explicit Matrix(int n_vars, int n_rest, const std::string& obj);
+    explicit Matrix(int& n_vars, int& n_rest);
 
     //Getters
     [[nodiscard]] int cols_getter() const noexcept;

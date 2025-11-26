@@ -37,6 +37,15 @@
     <QtUic Include="Form Files\Simplex_Method_GUI.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Objetive.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Setter.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
+    <QtUic Include="Boxes.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source Files\main.cpp">
@@ -54,6 +63,15 @@
     <ClCompile Include="Source Files\Logic\Minimization.cpp">
       <Filter>Source Files\Logic</Filter>
     </ClCompile>
+    <ClCompile Include="Objetive.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Setter.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Boxes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header Files\Logic\Matrix.h">
@@ -70,5 +88,17 @@
     <QtMoc Include="Header Files\Simplex_Method_GUI.h">
       <Filter>Header Files</Filter>
     </QtMoc>
+    <QtMoc Include="Objetive.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Setter.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Boxes.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>
