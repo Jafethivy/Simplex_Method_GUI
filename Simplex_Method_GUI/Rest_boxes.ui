@@ -1,34 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>BoxesClass</class>
- <widget class="QWidget" name="BoxesClass">
+ <class>Rest_boxesClass</class>
+ <widget class="QWidget" name="Rest_boxesClass">
   <property name="geometry">
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>123</width>
+    <width>94</width>
     <height>41</height>
    </rect>
   </property>
   <property name="minimumSize">
    <size>
-    <width>123</width>
+    <width>94</width>
     <height>41</height>
    </size>
   </property>
   <property name="maximumSize">
    <size>
-    <width>123</width>
+    <width>94</width>
     <height>41</height>
    </size>
   </property>
   <property name="windowTitle">
-   <string>Boxes</string>
+   <string>Rest_boxes</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">background-color: #ffffff;
-
-</string>
+   <string notr="true">background-color: #ffffff;</string>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="spacing">
@@ -47,7 +45,41 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QDoubleSpinBox" name="box">
+    <widget class="QLabel" name="x_n">
+     <property name="minimumSize">
+      <size>
+       <width>31</width>
+       <height>41</height>
+      </size>
+     </property>
+     <property name="maximumSize">
+      <size>
+       <width>31</width>
+       <height>41</height>
+      </size>
+     </property>
+     <property name="font">
+      <font>
+       <family>Arial</family>
+       <pointsize>12</pointsize>
+       <bold>true</bold>
+      </font>
+     </property>
+     <property name="styleSheet">
+      <string notr="true">color: #000000;
+border: none;
+</string>
+     </property>
+     <property name="text">
+      <string>≤</string>
+     </property>
+     <property name="alignment">
+      <set>Qt::AlignmentFlag::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item>
+    <widget class="QDoubleSpinBox" name="result_n">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
        <horstretch>0</horstretch>
@@ -88,73 +120,6 @@ border:  1px solid #00171F;</string>
      </property>
      <property name="stepType">
       <enum>QAbstractSpinBox::StepType::DefaultStepType</enum>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="x_n">
-     <property name="minimumSize">
-      <size>
-       <width>31</width>
-       <height>41</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>31</width>
-       <height>41</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>12</pointsize>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #000000;
-border: none;
-</string>
-     </property>
-     <property name="text">
-      <string>x_1</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
-     </property>
-    </widget>
-   </item>
-   <item>
-    <widget class="QLabel" name="plus">
-     <property name="minimumSize">
-      <size>
-       <width>31</width>
-       <height>41</height>
-      </size>
-     </property>
-     <property name="maximumSize">
-      <size>
-       <width>31</width>
-       <height>41</height>
-      </size>
-     </property>
-     <property name="font">
-      <font>
-       <family>Arial</family>
-       <pointsize>12</pointsize>
-       <bold>true</bold>
-      </font>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">color: #000000;
-border: none;
-</string>
-     </property>
-     <property name="text">
-      <string>+</string>
-     </property>
-     <property name="alignment">
-      <set>Qt::AlignmentFlag::AlignCenter</set>
      </property>
     </widget>
    </item>

@@ -8,10 +8,12 @@ class Boxes : public QWidget
 	Q_OBJECT
 
 public:
-	Boxes(QWidget *parent = nullptr);
+	Boxes(const QString &x_number,QWidget *parent = nullptr);
 	~Boxes();
 
+	void plus_visible();
+
+	double box_value() const;
 private:
 	Ui::BoxesClass ui;
 };
-

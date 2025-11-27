@@ -17,6 +17,6 @@ void Setter::on_Generate_button_clicked(){
 	if (variable < 2 || restrictions < 2) { return; }
 
 	emit signal_init_matrix(variable, restrictions);
-	emit signal_vars_rests(variable, restrictions);
+	emit signal_set_boxes();
 	emit signal_next_window(1);
 }

@@ -16,9 +16,11 @@ public:
     ~Simplex_Method_GUI();
 
 	void init_matrix(int& vars, int& rest);
-	void destroy_matrix();
+	void call_destuctor();
 
-	void send_package(int& vars, int& rest);
+	void set_boxes();	
+
+	void solve_matrix();
 
 private:
     Ui::Simplex_Method_GUIClass ui;

@@ -10,7 +10,7 @@ Matrix::Matrix(int& n_vars, int& n_rest){
     cols = n_vars + rows;
     size_t total_size = static_cast<size_t>(rows) * static_cast<size_t>(cols);
     tabla.resize(total_size, 0);
-    funcZ.resize(variables);
+    funcZ.resize(variables);    
     objetive = "";
 }
 
