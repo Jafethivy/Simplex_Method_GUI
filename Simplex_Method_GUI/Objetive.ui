@@ -173,7 +173,7 @@ background-color: #003459;</string>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>20</width>
+         <width>705</width>
          <height>13</height>
         </size>
        </property>
@@ -296,7 +296,7 @@ QScrollArea QWidget {
                 </widget>
                </item>
                <item>
-                <widget class="QComboBox" name="comboBox">
+                <widget class="QComboBox" name="Objetive_box">
                  <property name="minimumSize">
                   <size>
                    <width>341</width>
@@ -376,7 +376,7 @@ border: 1px solid #00171F;</string>
                <property name="sizeHint" stdset="0">
                 <size>
                  <width>13</width>
-                 <height>20</height>
+                 <height>128</height>
                 </size>
                </property>
               </spacer>
@@ -425,7 +425,7 @@ border: 1px solid #00171F;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QWidget" name="widget" native="true">
+                <widget class="QWidget" name="Func_z_container" native="true">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                    <horstretch>0</horstretch>
@@ -456,7 +456,7 @@ border: 1px solid #00171F;</string>
                <property name="sizeHint" stdset="0">
                 <size>
                  <width>13</width>
-                 <height>20</height>
+                 <height>128</height>
                 </size>
                </property>
               </spacer>
@@ -528,7 +528,7 @@ border: 1px solid #00171F;</string>
                 </widget>
                </item>
                <item>
-                <widget class="QWidget" name="widget_2" native="true">
+                <widget class="QWidget" name="Restrictions_container" native="true">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="MinimumExpanding" vsizetype="MinimumExpanding">
                    <horstretch>0</horstretch>
@@ -582,7 +582,7 @@ border: 1px solid #00171F;</string>
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>20</width>
+         <width>705</width>
          <height>13</height>
         </size>
        </property>
@@ -590,6 +590,9 @@ border: 1px solid #00171F;</string>
      </item>
      <item>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
+       <property name="spacing">
+        <number>0</number>
+       </property>
        <item>
         <spacer name="horizontalSpacer_2">
          <property name="orientation">
@@ -660,6 +663,63 @@ QPushButton:pressed {
          </property>
         </spacer>
        </item>
+       <item>
+        <widget class="QPushButton" name="Solve_button">
+         <property name="minimumSize">
+          <size>
+           <width>191</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>191</width>
+           <height>41</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Candara</family>
+           <pointsize>14</pointsize>
+          </font>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">QPushButton {
+    background-color: qlineargradient(x1:0 y1:0, x2:0 y2:1,
+        stop:0 #00A7E1, stop:1 #00A7E1);
+    border: none;
+    border-radius: 6px;
+    padding: 10px;
+}
+
+QPushButton:hover {
+    background-color: qlineargradient(x1:0 y1:0, x2:0 y2:1,
+        stop:0 #0AC2FF, stop:1 #0AC2FF);
+}
+
+QPushButton:pressed {
+    background-color: qlineargradient(x1:0 y1:0, x2:0 y2:1,
+        stop:0 #0099CC, stop:1 #0099CC);
+}</string>
+         </property>
+         <property name="text">
+          <string>Resolver Matriz</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_10">
+         <property name="orientation">
+          <enum>Qt::Orientation::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
       </layout>
      </item>
      <item>
@@ -672,7 +732,7 @@ QPushButton:pressed {
        </property>
        <property name="sizeHint" stdset="0">
         <size>
-         <width>20</width>
+         <width>705</width>
          <height>13</height>
         </size>
        </property>

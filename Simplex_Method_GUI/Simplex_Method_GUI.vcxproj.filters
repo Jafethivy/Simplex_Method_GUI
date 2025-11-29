@@ -46,6 +46,9 @@
     <QtUic Include="Boxes.ui">
       <Filter>Form Files</Filter>
     </QtUic>
+    <QtUic Include="Rest_boxes.ui">
+      <Filter>Form Files</Filter>
+    </QtUic>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source Files\main.cpp">
@@ -72,6 +75,9 @@
     <ClCompile Include="Boxes.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Rest_boxes.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Header Files\Logic\Matrix.h">
@@ -95,6 +101,9 @@
       <Filter>Header Files</Filter>
     </QtMoc>
     <QtMoc Include="Boxes.h">
+      <Filter>Header Files</Filter>
+    </QtMoc>
+    <QtMoc Include="Rest_boxes.h">
       <Filter>Header Files</Filter>
     </QtMoc>
   </ItemGroup>
