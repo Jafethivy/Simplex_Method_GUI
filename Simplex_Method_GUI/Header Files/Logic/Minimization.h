@@ -1,7 +1,7 @@
 ﻿#pragma once
 #include "Matrix.h"
 
-void start_minimization_min(Matrix& m);
+void start_minimization(Matrix& m);
 
 void pivoting_min(Matrix& m);
 

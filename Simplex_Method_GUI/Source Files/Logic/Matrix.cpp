@@ -10,7 +10,6 @@ Matrix::Matrix(int& n_vars, int& n_rest){
     cols = n_vars + rows;
     size_t total_size = static_cast<size_t>(rows) * static_cast<size_t>(cols);
     tabla.resize(total_size, 0);
-    funcZ.resize(variables);    
     objetive = "";
 }
 
@@ -30,7 +29,6 @@ int Matrix::cols_getter() const noexcept { return cols; }
 int Matrix::rows_getter() const noexcept { return rows; }
 int Matrix::vars_getter() const noexcept { return variables; }
 int Matrix::rest_getter() const noexcept { return restrictions; }
-double Matrix::Z_getter(int j) const { return funcZ[j]; }
 double Matrix::get_value(int i, int j) const { return at_b(i, j); }
 
 // Setters
@@ -43,25 +41,30 @@ void Matrix::values_setter(int i, int j, double value) {
 }
 
 // Cargar función objetivo
-void Matrix::set_objetive_function(const std::vector<double>& coefs) { // coefs : valores
-	assert(static_cast<int>(coefs.size()) == variables); // debug : la cantidad de coeficientes debe coincidir
-    funcZ = coefs;
+void Matrix::set_objetive_function(QVector<double>& coefs) {
     for (int j = 0; j < variables; ++j) {
         at_a(0, j) = coefs[j];
     }
 }
 
 // Cargar restricción
-void Matrix::set_restrictions(int idx, const std::vector<double>& coefs, double result) { // idx es el indice; coefs : valores ; result: valor de la restriccion
-	assert(idx < restrictions && static_cast<int>(coefs.size()) == variables); // debug : la cantidad de coeficientes debe coincidir
-    for (int j = 0; j < variables; ++j) {
-        at_a(idx + 1, j) = coefs[j];
+void Matrix::set_restrictions(QQueue<double>& r_values, QQueue<double>& results_values) { 
+    for (int idx = 0; idx < variables; idx++) {
+        for (int j = 0; j < variables; ++j) {
+            at_a(idx + 1, j) = r_values.head();
+			r_values.dequeue();
+        }
+        at_a(idx + 1, cols - 1) = results_values.head();
+		results_values.dequeue();
     }
-    at_a(idx + 1, cols - 1) = result;
 }
 
 // Imprimir matriz
 void Matrix::print_matrix() const {
+    for (int i = 0; i < vars_getter(); i++) {
+		qDebug()<<at_b(0, i);
+    }
+
     for (int i = 0; i < rows; ++i) {
         for (int j = 0; j < cols; ++j) {
             qDebug()<< "[" << at_b(i, j) << "]";

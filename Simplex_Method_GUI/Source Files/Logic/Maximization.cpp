@@ -4,12 +4,9 @@
 void start_maximization(Matrix& m) {
 	define_z(m);
 	fill_slack(m);
-	m.print_matrix();
 	while (!optimal_solution(m)) {
 		pivoting(m);
 	}
-	std::cout << "\nOptimal solution reached:\n";
-	m.print_matrix();
 }
 
 void pivoting(Matrix& m) {
@@ -21,7 +18,8 @@ void pivoting(Matrix& m) {
 
 void define_z(Matrix& m){ // funciona
 	for (int j = 0; j < m.vars_getter(); j++) {
-		m.Z_setter(j, -m.Z_getter(j));
+		double value_new = -m.get_value(0, j);
+		m.Z_setter(j, value_new);
 	}
 }
 void fill_slack(Matrix& m) { // funciona

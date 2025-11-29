@@ -296,7 +296,7 @@ QScrollArea QWidget {
                 </widget>
                </item>
                <item>
-                <widget class="QComboBox" name="comboBox">
+                <widget class="QComboBox" name="Objetive_box">
                  <property name="minimumSize">
                   <size>
                    <width>341</width>

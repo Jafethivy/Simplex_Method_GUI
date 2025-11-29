@@ -24,7 +24,12 @@ void Objetive::on_Editar_button_clicked() {
 	emit signal_previous_window(0);
 }
 void Objetive::on_Solve_button_clicked() {
-	emit signal_solve_matrix();
+	get_values_z();
+	get_values_r();
+	emit signal_set_values_matrix(z_values, r_values, results_values);
+	emit signal_set_objetive(get_objetive());
+	emit signal_test();
+
 }
 
 void Objetive::set_amount_boxes(int boxes) {
@@ -32,6 +37,11 @@ void Objetive::set_amount_boxes(int boxes) {
 }
 void Objetive::set_amount_rest(int rest) {
 	amount_rest = rest;
+}
+
+//Objetive zone
+bool Objetive::get_objetive() {
+	return ui.Objetive_box->currentIndex();
 }
 
 //Function Z zone
@@ -102,12 +112,20 @@ void Objetive::clear_boxes_r2() {
 	rest_list.clear();
 }
 
-//Ya pudimos obtener valores de z, ahora debes hacerlo con
-//las demas cosas y luego armar la matriz
-
 void Objetive::get_values_z() {
 	for (int i = 0; i < amount_boxes; i++) {
 		double value = z_list[i]->box_value();
-		qDebug() << value;
+		z_values.append(value);
+	}
+}
+
+void Objetive::get_values_r() {
+	for (int j = 0; j < amount_rest; j++) {
+		for (int i = 0; i < amount_boxes; i++) {
+			double value = r_list[j * amount_boxes + i]->box_value();
+			r_values.enqueue(value);
+		}
+		double rest_value = rest_list[j]->box_rest_value();
+		results_values.enqueue(rest_value);
 	}
 }

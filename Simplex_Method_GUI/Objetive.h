@@ -1,6 +1,8 @@
 #pragma once
 
 #include <QWidget>
+#include <QQueue>
+#include <QString>
 #include "ui_Objetive.h"
 
 class Boxes;
@@ -24,12 +26,18 @@ public:
 	void clear_boxes_r1();
 	void clear_boxes_r2();
 
+	bool get_objetive();
 	void get_values_z();
+	void get_values_r();
 
 signals:
 	void signal_previous_window(int index);
 	void signal_destroy_matrix();
-	void signal_solve_matrix();
+
+	void signal_set_values_matrix(QVector<double>& z_values,QQueue<double>& r_values,QQueue<double>& results_values);
+	void signal_set_objetive(bool objetive);
+
+	void signal_test();
 
 private slots:
 	void on_Editar_button_clicked();
@@ -47,5 +55,10 @@ private:
 	QVector<Rest_boxes*> rest_list;
 	QVBoxLayout* r2_layout = nullptr;
 	QHBoxLayout* r_layout = nullptr;
+
+	QVector<double> z_values;
+	QQueue<double> r_values;
+	QQueue<double> results_values;
 };
 
+ 

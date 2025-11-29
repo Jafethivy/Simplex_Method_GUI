@@ -1,14 +1,11 @@
 ﻿#include <iostream>
 #include "Minimization.h"
 
-void start_minimization_min(Matrix& m) {
+void start_minimization(Matrix& m) {
 	fill_slack_min(m);
-	m.print_matrix();
 	while (!optimal_solution_min(m)) {
 		pivoting_min(m);
 	}
-	std::cout << "\nOptimal solution reached:\n";
-	m.print_matrix();
 }
 
 void pivoting_min(Matrix& m) {

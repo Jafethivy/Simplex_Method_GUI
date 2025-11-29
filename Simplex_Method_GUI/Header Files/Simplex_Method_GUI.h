@@ -16,11 +16,16 @@ public:
     ~Simplex_Method_GUI();
 
 	void init_matrix(int& vars, int& rest);
-	void call_destuctor();
+	void call_destructor();
 
 	void set_boxes();	
 
-	void solve_matrix();
+	void set_values_matrix(QVector<double>& z_values,QQueue<double>& r_values, QQueue<double>& results_values) const;
+	void set_objetive(bool objetive);
+	
+	Matrix m2();
+
+	void test();
 
 private:
     Ui::Simplex_Method_GUIClass ui;
@@ -28,5 +33,5 @@ private:
 	Setter* setterWindow = nullptr;
 	Objetive* objetiveWindow = nullptr;
 
-	Matrix* m = nullptr;
+	Matrix* m;
 };
