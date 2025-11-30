@@ -1,9 +1,10 @@
 ﻿#pragma once
-#include "Matrix.h"
+#include "Iteration.h"
+class Matrix;
 
-void start_minimization(Matrix& m);
+void start_minimization(Matrix& m, callback_itr callback = nullptr);
 
-void pivoting_min(Matrix& m);
+void pivoting_min(Matrix& m, Iteration itr);
 
 void fill_slack_min(Matrix& m);
 void fill_i_min(Matrix& m);
@@ -16,5 +17,3 @@ void row_pivot_iterate_min(Matrix& m, int piv_row, int piv_col);
 void col_iterate_min(Matrix& m, int piv_row, int piv_col);
 
 bool optimal_solution_min(Matrix& m);
-
-

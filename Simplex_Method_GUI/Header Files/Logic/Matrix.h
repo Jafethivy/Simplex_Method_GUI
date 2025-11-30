@@ -9,6 +9,7 @@ private:
     std::vector<double> tabla;
     int rows, cols, variables, restrictions;
     std::string objetive;
+	int iteration = 0;
 
     // Acceso interno inline
     inline double& at_a(int i, int j);
@@ -27,10 +28,15 @@ public:
     [[nodiscard]] int vars_getter() const noexcept;
     [[nodiscard]] int rest_getter() const noexcept;
     [[nodiscard]] double get_value(int i, int j) const;
+    [[nodiscard]] std::vector<double> table_getter() const;
 
     // Setters
     void Z_setter(int j, double value);
     void values_setter(int i, int j, double value);
+
+	//Iteration getter and setter
+	int iteration_getter() const noexcept;
+	void iteration_setter() noexcept;
 
     // Carga de datos (separada de constructor)
     void set_objetive_function(QVector<double>& coefs);

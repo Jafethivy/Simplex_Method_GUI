@@ -1,16 +1,26 @@
 ﻿#include <iostream>
 #include "Minimization.h"
+#include "Matrix.h"
+#include <QDebug>
 
-void start_minimization(Matrix& m) {
+void start_minimization(Matrix& m, callback_itr callback) {
+	Iteration itr;
 	fill_slack_min(m);
+	itr.table = m.table_getter();
+	callback(itr);
 	while (!optimal_solution_min(m)) {
-		pivoting_min(m);
+		pivoting_min(m, itr);
+		m.iteration_setter();
+		itr.table = m.table_getter();
+		callback(itr);
 	}
 }
 
-void pivoting_min(Matrix& m) {
+void pivoting_min(Matrix& m, Iteration itr) {
 	int piv_col = det_piv_column_min(m);
 	int piv_row = det_piv_row_min(m, piv_col);
+	itr.piv_col = piv_col;
+	itr.piv_row = piv_row;
 	row_pivot_iterate_min(m, piv_row, piv_col);
 	col_iterate_min(m, piv_row, piv_col);
 }

@@ -5,7 +5,9 @@
 
 class Setter;
 class Objetive;
+class Final_solution;
 class Matrix;
+struct Iteration;
 
 class Simplex_Method_GUI : public QMainWindow
 {
@@ -22,16 +24,17 @@ public:
 
 	void set_values_matrix(QVector<double>& z_values,QQueue<double>& r_values, QQueue<double>& results_values) const;
 	void set_objetive(bool objetive);
-	
-	Matrix m2();
 
-	void test();
+	void debug();
 
+	QVector<Iteration> itr_getter();
 private:
     Ui::Simplex_Method_GUIClass ui;
 
 	Setter* setterWindow = nullptr;
 	Objetive* objetiveWindow = nullptr;
+	Final_solution* solutionWindow = nullptr;
 
 	Matrix* m;
+	QVector<Iteration> iterations;
 };

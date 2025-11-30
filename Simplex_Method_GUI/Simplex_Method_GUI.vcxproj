@@ -15,6 +15,7 @@
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="Boxes.ui" />
+    <QtUic Include="Final_solution.ui" />
     <QtUic Include="Form Files\Simplex_Method_GUI.ui" />
     <QtUic Include="Objetive.ui" />
     <QtUic Include="Rest_boxes.ui" />
@@ -22,6 +23,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Boxes.cpp" />
+    <ClCompile Include="Final_solution.cpp" />
     <ClCompile Include="Objetive.cpp" />
     <ClCompile Include="Rest_boxes.cpp" />
     <ClCompile Include="Setter.cpp" />
@@ -34,8 +36,10 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Iteration.h" />
     <QtMoc Include="Rest_boxes.h" />
     <QtMoc Include="Boxes.h" />
+    <QtMoc Include="Final_solution.h" />
     <ClInclude Include="Header Files\Logic\Matrix.h" />
     <ClInclude Include="Header Files\Logic\Maximization.h" />
     <ClInclude Include="Header Files\Logic\Minimization.h" />

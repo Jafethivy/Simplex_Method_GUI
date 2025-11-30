@@ -30,6 +30,7 @@ int Matrix::rows_getter() const noexcept { return rows; }
 int Matrix::vars_getter() const noexcept { return variables; }
 int Matrix::rest_getter() const noexcept { return restrictions; }
 double Matrix::get_value(int i, int j) const { return at_b(i, j); }
+std::vector<double> Matrix::table_getter() const { return tabla; }
 
 // Setters
 void Matrix::Z_setter(int j, double value) {
@@ -38,6 +39,14 @@ void Matrix::Z_setter(int j, double value) {
 }
 void Matrix::values_setter(int i, int j, double value) {
     at_a(i, j) = value;
+}
+
+// Iteration getter and setter
+int Matrix::iteration_getter() const noexcept {
+    return iteration;
+}
+void Matrix::iteration_setter() noexcept {
+    iteration += 1;
 }
 
 // Cargar función objetivo

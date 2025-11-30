@@ -13,7 +13,6 @@ public:
 signals:
 	void signal_init_matrix(int& variable, int& restrictions);
 	void signal_next_window(int index);
-	void signal_set_boxes();
 
 private slots:
 	void on_Generate_button_clicked();
