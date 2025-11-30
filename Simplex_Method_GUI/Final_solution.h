@@ -18,6 +18,7 @@ public:
 
 	QTableWidget* create_table();
 	QLabel* create_label(int i);
+	QLabel* create_info(int i);
 	QTableWidget* init_table(int i);
 	void table_size(QTableWidget* table);
 	QVBoxLayout* create_base(int i);
@@ -35,6 +36,9 @@ private:
 
 	int rest = 0;
 	int vars = 0;
+
+	QVector<QString> vars_in;
+	QVector<QString> rest_in;
 
 	QVector<Iteration> iterations;
 };
