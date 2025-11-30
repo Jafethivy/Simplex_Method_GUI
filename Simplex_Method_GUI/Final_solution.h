@@ -1,0 +1,41 @@
+#pragma once
+
+#include <QWidget>
+#include <QTableWidget>
+#include "ui_Final_solution.h"
+#include "Iteration.h"
+
+class Final_solution : public QWidget
+{
+	Q_OBJECT
+
+public:
+	Final_solution(QWidget *parent = nullptr);
+	~Final_solution();
+
+	void set_dimensions(int r, int c);
+	void set_itr_values(QVector<Iteration> itr);
+
+	QTableWidget* create_table();
+	QLabel* create_label(int i);
+	QTableWidget* init_table(int i);
+	void table_size(QTableWidget* table);
+	QVBoxLayout* create_base(int i);
+
+
+	void display_table();
+
+private:
+	Ui::Final_solutionClass ui;
+
+	QVBoxLayout* display_layout = nullptr;
+
+	int rows = 0;
+	int cols = 0;
+
+	int rest = 0;
+	int vars = 0;
+
+	QVector<Iteration> iterations;
+};
+

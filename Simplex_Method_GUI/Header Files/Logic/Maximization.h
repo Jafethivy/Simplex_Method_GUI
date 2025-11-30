@@ -1,9 +1,10 @@
 ﻿#pragma once
-#include "Matrix.h"
+#include "Iteration.h"
+class Matrix;
 
-void start_maximization(Matrix& m);
+void start_maximization(Matrix& m, callback_itr callback = nullptr);
 
-void pivoting(Matrix& m);
+void pivoting(Matrix& m, Iteration itr);
 
 void define_z(Matrix& m);
 void fill_slack(Matrix& m);

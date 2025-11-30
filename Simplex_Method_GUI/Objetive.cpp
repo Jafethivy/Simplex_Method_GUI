@@ -24,12 +24,16 @@ void Objetive::on_Editar_button_clicked() {
 	emit signal_previous_window(0);
 }
 void Objetive::on_Solve_button_clicked() {
+	solve_matrix();
+	emit signal_solution();
+	emit signal_next_window(2);
+}
+
+void Objetive::solve_matrix() {
 	get_values_z();
 	get_values_r();
 	emit signal_set_values_matrix(z_values, r_values, results_values);
 	emit signal_set_objetive(get_objetive());
-	emit signal_test();
-
 }
 
 void Objetive::set_amount_boxes(int boxes) {

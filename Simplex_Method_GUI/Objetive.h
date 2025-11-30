@@ -30,14 +30,17 @@ public:
 	void get_values_z();
 	void get_values_r();
 
+	void solve_matrix();
+
 signals:
 	void signal_previous_window(int index);
+	void signal_next_window(int index);
 	void signal_destroy_matrix();
 
 	void signal_set_values_matrix(QVector<double>& z_values,QQueue<double>& r_values,QQueue<double>& results_values);
 	void signal_set_objetive(bool objetive);
 
-	void signal_test();
+	void signal_solution();
 
 private slots:
 	void on_Editar_button_clicked();

@@ -1,28 +1,37 @@
 ﻿#include <iostream>
 #include "Maximization.h"
+#include "Matrix.h"
 
-void start_maximization(Matrix& m) {
+void start_maximization(Matrix& m, callback_itr callback) {
+	Iteration itr;
 	define_z(m);
 	fill_slack(m);
+	itr.table = m.table_getter();
+	callback(itr);
 	while (!optimal_solution(m)) {
-		pivoting(m);
+		pivoting(m, itr);
+		m.iteration_setter();
+		itr.table = m.table_getter();
+		callback(itr);
 	}
 }
 
-void pivoting(Matrix& m) {
+void pivoting(Matrix& m, Iteration itr) {
 	int piv_col = det_piv_column(m);
 	int piv_row = det_piv_row(m, piv_col);
+	itr.piv_col = piv_col;
+	itr.piv_row = piv_row;
 	row_pivot_iterate(m, piv_row, piv_col);
 	col_iterate(m, piv_row, piv_col);
 }
 
-void define_z(Matrix& m){ // funciona
+void define_z(Matrix& m){
 	for (int j = 0; j < m.vars_getter(); j++) {
 		double value_new = -m.get_value(0, j);
 		m.Z_setter(j, value_new);
 	}
 }
-void fill_slack(Matrix& m) { // funciona
+void fill_slack(Matrix& m) {
 	fill_i(m);
 }
 void fill_j(int i, Matrix& m) {
@@ -37,7 +46,7 @@ void fill_i(Matrix& m) {
 	}
 }
 
-int det_piv_column(Matrix& m) { // funciona
+int det_piv_column(Matrix& m) {
 	int piv_col = 0;
 	double most_neg = 0;
 	for (int j = 0; j < m.cols_getter() - 1; j++) {
