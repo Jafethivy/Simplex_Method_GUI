@@ -16,14 +16,27 @@ public:
 	void set_dimensions(int r, int c);
 	void set_itr_values(QVector<Iteration> itr);
 
-	QTableWidget* create_table();
+	QTableWidget* create_table(int n);
+	void style_table(QTableWidget* table, QStringList cols_str, QStringList rows_str);
 	QLabel* create_label(int i);
+	QLabel* create_info(int i);
 	QTableWidget* init_table(int i);
 	void table_size(QTableWidget* table);
 	QVBoxLayout* create_base(int i);
 
-
 	void display_table();
+
+	void clear();
+
+signals:
+
+	void signal_previous_window(int index);
+	void signal_new_problem();
+
+private slots:
+
+	void on_Editar_button_clicked();
+	void on_Solve_button_clicked();
 
 private:
 	Ui::Final_solutionClass ui;
@@ -36,6 +49,12 @@ private:
 	int rest = 0;
 	int vars = 0;
 
+	QVector<QString> vars_in;
+	QVector<QString> rest_in;
+
 	QVector<Iteration> iterations;
+
+	QVector<QString> inputs;
+	QVector<int>outputs;
 };
 

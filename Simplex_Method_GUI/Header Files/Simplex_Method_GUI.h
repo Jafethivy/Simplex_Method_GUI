@@ -27,6 +27,8 @@ public:
 
 	void debug();
 
+	void new_problem();
+
 	QVector<Iteration> itr_getter();
 private:
     Ui::Simplex_Method_GUIClass ui;

@@ -133,3 +133,26 @@ void Objetive::get_values_r() {
 		results_values.enqueue(rest_value);
 	}
 }
+
+void Objetive::clear() {
+	int amount_boxes = 0;
+	int amout_rest = 0;
+
+	qDeleteAll(z_list);
+	z_list.clear();
+	qDeleteAll(r_list);
+	r_list.clear();
+	qDeleteAll(rest_list);
+	rest_list.clear();
+
+	z_values.clear();
+	r_values.clear();
+	results_values.clear();
+
+	if (z_layout) {
+		qDeleteAll(z_layout->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly));
+	}
+	if (r2_layout) {
+		qDeleteAll(r2_layout->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly));
+	}
+}
