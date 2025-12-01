@@ -24,7 +24,7 @@ void Final_solution::set_itr_values(QVector<Iteration> itr) {
     iterations = itr;
 }
 
-QTableWidget* Final_solution::create_table() {
+QTableWidget* Final_solution::create_table(int n) {
     QTableWidget* table = new QTableWidget();
 
     table->setRowCount(rows);
@@ -34,26 +34,32 @@ QTableWidget* Final_solution::create_table() {
     for (int i = 0; i < vars; i++) {
         QString name_a = QString("x_%1").arg(i + 1);
 		cols_str.append(name_a);
-        vars_in.append(name_a);
+        if(n==0){ vars_in.append(name_a); }
 
     }
     for (int i = vars; i < cols - 1; i++) {
         QString name_b = QString("s_%1").arg(i - vars + 1);
 		cols_str.append(name_b);
-        vars_in.append(name_b);
+        if (n == 0) { vars_in.append(name_b); }
     }
     QString name_c = QString("Resultado");
     cols_str.append(name_c);
-    vars_in.append(name_c);
+    if (n == 0) { vars_in.append(name_c); }
 
     QString name_d = "Z";
     rows_str.append(name_d);
-    rest_in.append(name_d);
+    if (n == 0) { rest_in.append(name_d); }
     for (int i = 1; i < rows; i++) {
         QString name_e = QString("x_%1").arg(i);
         rows_str.append(name_e);
-        rest_in.append(name_e);
+        if (n == 0) { rest_in.append(name_e); }
     }
+    QFont font = table->font();
+    font.setPointSize(12);
+    table->setFont(font);
+
+    table->horizontalHeader()->setFont(font);
+    table->verticalHeader()->setFont(font);
 
     table->setHorizontalHeaderLabels(cols_str);
 	table->setVerticalHeaderLabels(rows_str);
@@ -99,14 +105,26 @@ QLabel* Final_solution::create_label(int i) {
 
 QLabel* Final_solution::create_info(int i) {
     Iteration itr = iterations[i];
+    qDebug() << itr.table;
+    qDebug() << itr.piv_col;
+    qDebug() << itr.piv_row;
 
-
-    QLabel* label = new QLabel(this);
+    QLabel* label = new QLabel("hola cualquier cosa", this);
+    QFont font("Candara", 14);
+    font.setStyleStrategy(QFont::PreferAntialias);
+    label->setFont(font);
+    label->setStyleSheet(
+        "QLabel {"
+        "   background-color: #FFFFFF;"
+        "   color: #000000;"
+        "   padding: 10px;"
+        "}"
+    );
     return label;
 }
 
 QTableWidget* Final_solution::init_table(int i) {
-    QTableWidget* table = create_table();
+    QTableWidget* table = create_table(i);
     Iteration itr = iterations[i];
     std::vector<double> data = itr.table;
     QVector<double> qdata(data.begin(), data.end());
@@ -169,7 +187,7 @@ QVBoxLayout* Final_solution::create_base(int i){
     base->setContentsMargins(0, 0, 0, 0);
     base->addWidget(create_label(i));
     base->addWidget(init_table(i));
-    //base->addWidget(create_info(i));
+    base->addWidget(create_info(i));
     return base;
 }
 
@@ -188,4 +206,6 @@ void Final_solution::display_table() {
 
         display_layout->addLayout(spacers);
     }
+    qDebug() << vars_in;
+    qDebug() << rest_in;
 }

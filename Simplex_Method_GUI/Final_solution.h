@@ -16,7 +16,7 @@ public:
 	void set_dimensions(int r, int c);
 	void set_itr_values(QVector<Iteration> itr);
 
-	QTableWidget* create_table();
+	QTableWidget* create_table(int n);
 	QLabel* create_label(int i);
 	QLabel* create_info(int i);
 	QTableWidget* init_table(int i);

@@ -19,21 +19,20 @@ void start_minimization(Matrix& m, callback_itr callback) {
 	}
 }
 
-void pivoting_min(Matrix& m, Iteration itr) {
+void pivoting_min(Matrix& m, Iteration& itr) {
 	int piv_col = det_piv_column_min(m);
 	if (piv_col == -1) {
-		// Óptimo alcanzado
 		return;
 	}
 
 	int piv_row = det_piv_row_min(m, piv_col);
 	if (piv_row == -1) {
-		qDebug() << "Error: Problema no acotado";
 		return;
 	}
 
 	itr.piv_col = piv_col;
 	itr.piv_row = piv_row;
+
 	row_pivot_iterate_min(m, piv_row, piv_col);
 	col_iterate_min(m, piv_row, piv_col);
 }

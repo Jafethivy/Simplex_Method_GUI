@@ -242,7 +242,6 @@ QScrollArea QWidget {
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
-             <layout class="QHBoxLayout" name="horizontalLayout_7"/>
             </widget>
            </item>
           </layout>

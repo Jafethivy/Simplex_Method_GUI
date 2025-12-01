@@ -19,7 +19,7 @@ void start_maximization(Matrix& m, callback_itr callback) {
 	}
 }
 
-void pivoting(Matrix& m, Iteration itr) {
+void pivoting(Matrix& m, Iteration& itr) {
 	int piv_col = det_piv_column(m);
 	if (piv_col == -1) {
 		// Óptimo alcanzado
