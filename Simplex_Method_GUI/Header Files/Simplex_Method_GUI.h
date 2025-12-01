@@ -28,6 +28,7 @@ public:
 	void debug();
 
 	void new_problem();
+	void edit_problem();
 
 	QVector<Iteration> itr_getter();
 private:

@@ -16,13 +16,15 @@ public:
 	void set_dimensions(int r, int c);
 	void set_itr_values(QVector<Iteration> itr);
 
-	QTableWidget* create_table(int n);
-	void style_table(QTableWidget* table, QStringList cols_str, QStringList rows_str);
-	QLabel* create_label(int i);
-	QLabel* create_info(int i);
-	QTableWidget* init_table(int i);
+	QTableWidget* create_table(int n, QWidget* parent);
+	QLabel* create_label(int i, QWidget* parent);
+	QLabel* create_info(int i, QWidget* parent);
+
 	void table_size(QTableWidget* table);
-	QVBoxLayout* create_base(int i);
+	void style_table(QTableWidget* table, QStringList cols_str, QStringList rows_str);
+
+	QVBoxLayout* create_base(int i, QWidget* parent);
+	QTableWidget* init_table(int i, QWidget* parent);
 
 	void display_table();
 
@@ -30,13 +32,14 @@ public:
 
 signals:
 
-	void signal_previous_window(int index);
 	void signal_new_problem();
+	void signal_previous_window(int index);
+	void signal_edit_problem();
 
 private slots:
 
 	void on_Editar_button_clicked();
-	void on_Solve_button_clicked();
+	void on_New_button_clicked();
 
 private:
 	Ui::Final_solutionClass ui;

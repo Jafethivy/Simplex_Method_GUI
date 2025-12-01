@@ -24,8 +24,8 @@ void Final_solution::set_itr_values(QVector<Iteration> itr) {
     iterations = itr;
 }
 
-QTableWidget* Final_solution::create_table(int n) {
-    QTableWidget* table = new QTableWidget();
+QTableWidget* Final_solution::create_table(int n, QWidget* parent) {
+    QTableWidget* table = new QTableWidget(parent);
 
     //Columns
     table->setRowCount(rows);
@@ -94,48 +94,12 @@ QTableWidget* Final_solution::create_table(int n) {
 	return table;
 }
 
-void Final_solution::style_table(QTableWidget* table, QStringList cols_str, QStringList rows_str) {
-    QFont font = table->font();
-    font.setPointSize(12);
-    table->setFont(font);
-
-    table->horizontalHeader()->setFont(font);
-    table->verticalHeader()->setFont(font);
-
-    table->setHorizontalHeaderLabels(cols_str);
-    table->setVerticalHeaderLabels(rows_str);
-
-    table->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
-    table->verticalHeader()->setDefaultAlignment(Qt::AlignCenter);
-
-    QString styleSheet = R"(
-        QTableWidget {
-            color: #000000;
-            gridline-color: #000000;
-        }
-    
-        QHeaderView::section {
-            background-color: white;
-            color: #000000;
-            border: 1px solid #000000;
-        }
-    
-        QTableWidget::item {
-            color: #000000;
-        }
-    )";
-
-    table->setStyleSheet(styleSheet);
-    table->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
-}
-
-QLabel* Final_solution::create_label(int i) {
+QLabel* Final_solution::create_label(int i, QWidget* parent) {
     QString name = QString("Iteracion n.%1").arg(i);
     if (i == 0) {
         name = QString("Matriz Inicial");
     }
-    QLabel* tituloLabel = new QLabel(name,this);
+    QLabel* tituloLabel = new QLabel(name, parent);
     QFont font("Candara", 16);
     font.setStyleStrategy(QFont::PreferAntialias);
     tituloLabel->setFont(font);
@@ -149,7 +113,7 @@ QLabel* Final_solution::create_label(int i) {
     return tituloLabel;
 }
 
-QLabel* Final_solution::create_info(int i) {
+QLabel* Final_solution::create_info(int i, QWidget* parent) {
     QString text = "";
     if (i + 1 < static_cast<int>(iterations.size())) {
         text += QString("Ingresa la variable ");
@@ -159,7 +123,7 @@ QLabel* Final_solution::create_info(int i) {
         text += QString("El elemento pivote es %1.").arg(next_itr.iterated);
     }
 
-    QLabel* label = new QLabel(text, this);
+    QLabel* label = new QLabel(text, parent);
     QFont font("Candara", 14);
     font.setStyleStrategy(QFont::PreferAntialias);
     label->setFont(font);
@@ -173,8 +137,8 @@ QLabel* Final_solution::create_info(int i) {
     return label;
 }
 
-QTableWidget* Final_solution::init_table(int i) {
-    QTableWidget* table = create_table(i);
+QTableWidget* Final_solution::init_table(int i, QWidget* parent) {
+    QTableWidget* table = create_table(i, parent);
     Iteration& itr = iterations[i];
     std::vector<double> data = itr.table;
     QVector<double> qdata(data.begin(), data.end());
@@ -244,19 +208,65 @@ void Final_solution::table_size(QTableWidget* table) {
     table->setFixedSize(width, height);
 }
 
-QVBoxLayout* Final_solution::create_base(int i){
+void Final_solution::style_table(QTableWidget* table, QStringList cols_str, QStringList rows_str) {
+    QFont font = table->font();
+    font.setPointSize(12);
+    table->setFont(font);
+
+    table->horizontalHeader()->setFont(font);
+    table->verticalHeader()->setFont(font);
+
+    table->setHorizontalHeaderLabels(cols_str);
+    table->setVerticalHeaderLabels(rows_str);
+
+    table->horizontalHeader()->setDefaultAlignment(Qt::AlignCenter);
+    table->verticalHeader()->setDefaultAlignment(Qt::AlignCenter);
+
+    QString styleSheet = R"(
+        QTableWidget {
+            color: #000000;
+            gridline-color: #000000;
+        }
+    
+        QHeaderView::section {
+            background-color: white;
+            color: #000000;
+            border: 1px solid #000000;
+        }
+    
+        QTableWidget::item {
+            color: #000000;
+        }
+    )";
+
+    table->setStyleSheet(styleSheet);
+    table->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+    table->setEditTriggers(QAbstractItemView::NoEditTriggers);
+}
+
+QVBoxLayout* Final_solution::create_base(int i, QWidget* parent){
     QVBoxLayout* base = new QVBoxLayout;
     base->setSpacing(0);
     base->setContentsMargins(0, 0, 0, 0);
-    base->addWidget(create_label(i));//
-    base->addWidget(init_table(i));//
-    base->addWidget(create_info(i));//
+    base->addWidget(create_label(i, parent));
+    base->addWidget(init_table(i, parent));
+    base->addWidget(create_info(i, parent));
     return base;
 }
 
 void Final_solution::display_table() {
+
+    qDeleteAll(ui.Solution_container->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly));
+
+    while (QLayoutItem* item = display_layout->takeAt(0)) {
+        if (item->spacerItem()) {
+            delete item->spacerItem();
+        }
+        delete item;
+    }
+
     for (int i = 0; i < iterations.size(); i++) {
-        QHBoxLayout* spacers = new QHBoxLayout();
+        QHBoxLayout* spacers = new QHBoxLayout;
         spacers->setSpacing(0);
         spacers->setContentsMargins(0, 0, 0, 0);
 
@@ -264,7 +274,7 @@ void Final_solution::display_table() {
         QSpacerItem* rightSpacer = new QSpacerItem(50, 0, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         spacers->addSpacerItem(leftSpacer);
-        spacers->addLayout(create_base(i));
+        spacers->addLayout(create_base(i, ui.Solution_container));
         spacers->addSpacerItem(rightSpacer);
 
         display_layout->addLayout(spacers);
@@ -272,11 +282,11 @@ void Final_solution::display_table() {
 }
 
 void Final_solution::on_Editar_button_clicked() {
-    clear();
     emit signal_previous_window(1);
+    emit signal_edit_problem();
 }
 
-void Final_solution::on_Solve_button_clicked() {
+void Final_solution::on_New_button_clicked() {
     emit signal_previous_window(0);
     emit signal_new_problem();
 }
