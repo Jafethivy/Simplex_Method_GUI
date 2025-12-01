@@ -25,7 +25,7 @@ void Final_solution::set_itr_values(QVector<Iteration> itr) {
 }
 
 QTableWidget* Final_solution::create_table(int n) {
-    QTableWidget* table = new QTableWidget(display_layout);
+    QTableWidget* table = new QTableWidget();
 
     //Columns
     table->setRowCount(rows);
@@ -244,7 +244,7 @@ void Final_solution::table_size(QTableWidget* table) {
     table->setFixedSize(width, height);
 }
 
-QVBoxLayout* Final_solution::create_base(int i, QWidget* parent){
+QVBoxLayout* Final_solution::create_base(int i){
     QVBoxLayout* base = new QVBoxLayout;
     base->setSpacing(0);
     base->setContentsMargins(0, 0, 0, 0);
@@ -264,7 +264,7 @@ void Final_solution::display_table() {
         QSpacerItem* rightSpacer = new QSpacerItem(50, 0, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         spacers->addSpacerItem(leftSpacer);
-        spacers->addLayout(create_base(i));//aqui debug
+        spacers->addLayout(create_base(i));
         spacers->addSpacerItem(rightSpacer);
 
         display_layout->addLayout(spacers);
