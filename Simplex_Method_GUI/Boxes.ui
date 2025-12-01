@@ -83,6 +83,9 @@ border:  1px solid #00171F;</string>
      <property name="buttonSymbols">
       <enum>QAbstractSpinBox::ButtonSymbols::NoButtons</enum>
      </property>
+     <property name="minimum">
+      <double>-999999999.990000009536743</double>
+     </property>
      <property name="maximum">
       <double>999999999.990000009536743</double>
      </property>
