@@ -33,6 +33,7 @@ public:
 	void solve_matrix();
 
 	void clear();
+	void clear_alt();
 
 signals:
 	void signal_previous_window(int index);
