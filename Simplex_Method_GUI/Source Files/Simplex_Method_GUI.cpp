@@ -79,8 +79,15 @@ void Simplex_Method_GUI::set_objetive(bool objetive) {
 
 void Simplex_Method_GUI::debug() { // esta funcion tiene nombre raro pq la otra no compilaba jijijijiji
     solutionWindow->set_dimensions(m->rows_getter(), m->cols_getter());
+	
 	QVector<Iteration> itrs = itr_getter();
+
     solutionWindow->set_itr_values(itrs);
+
+	iterations.clear();
+	itrs.clear();
+	itrs.squeeze();
+
 	solutionWindow->display_table();
 }
 
@@ -97,4 +104,7 @@ void Simplex_Method_GUI::new_problem() {
 
 void Simplex_Method_GUI::edit_problem() {
 	solutionWindow->clear();
+	objetiveWindow->clear_alt();
+	iterations.clear();
+	call_destructor();
 }

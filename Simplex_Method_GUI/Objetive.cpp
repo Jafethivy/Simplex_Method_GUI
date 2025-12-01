@@ -156,3 +156,9 @@ void Objetive::clear() {
 		qDeleteAll(r2_layout->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly));
 	}
 }
+
+void Objetive::clear_alt() {
+	z_values.clear();
+	r_values.clear();
+	results_values.clear();
+}
