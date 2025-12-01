@@ -34,6 +34,8 @@ void pivoting(Matrix& m, Iteration& itr) {
 
 	itr.piv_col = piv_col;
 	itr.piv_row = piv_row;
+	itr.iterated = m.get_value(piv_row, piv_col);
+
 	row_pivot_iterate(m, piv_row, piv_col);
 	col_iterate(m, piv_row, piv_col);
 }

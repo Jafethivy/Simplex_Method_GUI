@@ -24,6 +24,7 @@ Simplex_Method_GUI::Simplex_Method_GUI(QWidget *parent)
 	connect(setterWindow, &Setter::signal_next_window, ui.stackedWidget, &QStackedWidget::setCurrentIndex);
 	connect(objetiveWindow, &Objetive::signal_previous_window, ui.stackedWidget, &QStackedWidget::setCurrentIndex);
 	connect(objetiveWindow, &Objetive::signal_next_window, ui.stackedWidget, &QStackedWidget::setCurrentIndex);
+	connect(solutionWindow, &Final_solution::signal_previous_window, ui.stackedWidget, &QStackedWidget::setCurrentIndex);
 
 	connect(setterWindow, &Setter::signal_init_matrix, this, &Simplex_Method_GUI::init_matrix);
 	connect(objetiveWindow, &Objetive::signal_destroy_matrix, this, &Simplex_Method_GUI::call_destructor );
@@ -32,6 +33,8 @@ Simplex_Method_GUI::Simplex_Method_GUI(QWidget *parent)
 	connect(objetiveWindow, &Objetive::signal_set_objetive, this, &Simplex_Method_GUI::set_objetive);
 	
 	connect(objetiveWindow, &Objetive::signal_solution, this, &Simplex_Method_GUI::debug);
+
+	connect(solutionWindow, &Final_solution::signal_new_problem, this, &Simplex_Method_GUI::new_problem);
 
 	ui.stackedWidget->setCurrentIndex(0);
 }
@@ -83,4 +86,10 @@ void Simplex_Method_GUI::debug() { // esta funcion tiene nombre raro pq la otra 
 
 QVector<Iteration> Simplex_Method_GUI::itr_getter() {
 	return iterations;
+}
+
+void Simplex_Method_GUI::new_problem() {
+	solutionWindow->clear();
+	objetiveWindow->clear();
+	call_destructor();
 }

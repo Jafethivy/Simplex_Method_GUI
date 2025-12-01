@@ -32,6 +32,8 @@ public:
 
 	void solve_matrix();
 
+	void clear();
+
 signals:
 	void signal_previous_window(int index);
 	void signal_next_window(int index);
