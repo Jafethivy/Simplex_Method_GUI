@@ -91,5 +91,10 @@ QVector<Iteration> Simplex_Method_GUI::itr_getter() {
 void Simplex_Method_GUI::new_problem() {
 	solutionWindow->clear();
 	objetiveWindow->clear();
+	iterations.clear();
 	call_destructor();
+}
+
+void Simplex_Method_GUI::edit_problem() {
+	solutionWindow->clear();
 }

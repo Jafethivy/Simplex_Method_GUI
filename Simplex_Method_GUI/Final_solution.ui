@@ -139,6 +139,12 @@ background-color: #FFFFFF;</string>
          </item>
          <item>
           <widget class="QFrame" name="frame_3">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
              <width>281</width>
@@ -198,7 +204,7 @@ background-color: #003459;</string>
          </property>
          <property name="styleSheet">
           <string notr="true">QScrollArea{
-    border: 1px solid #00171F;
+    border: none;
 }
 
 QScrollArea QWidget {
@@ -214,8 +220,8 @@ QScrollArea QWidget {
            <rect>
             <x>0</x>
             <y>0</y>
-            <width>691</width>
-            <height>387</height>
+            <width>693</width>
+            <height>389</height>
            </rect>
           </property>
           <layout class="QHBoxLayout" name="horizontalLayout_4">
@@ -326,7 +332,7 @@ QPushButton:pressed {
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="Solve_button">
+        <widget class="QPushButton" name="New_button">
          <property name="minimumSize">
           <size>
            <width>191</width>
