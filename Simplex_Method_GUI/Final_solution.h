@@ -22,7 +22,7 @@ public:
 	QLabel* create_info(int i);
 	QTableWidget* init_table(int i);
 	void table_size(QTableWidget* table);
-	QVBoxLayout* create_base(int i);
+	QVBoxLayout* create_base(int i, QWidget* parent);
 
 	void display_table();
 

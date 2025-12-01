@@ -25,7 +25,7 @@ void Final_solution::set_itr_values(QVector<Iteration> itr) {
 }
 
 QTableWidget* Final_solution::create_table(int n) {
-    QTableWidget* table = new QTableWidget();
+    QTableWidget* table = new QTableWidget(display_layout);
 
     //Columns
     table->setRowCount(rows);
@@ -244,19 +244,19 @@ void Final_solution::table_size(QTableWidget* table) {
     table->setFixedSize(width, height);
 }
 
-QVBoxLayout* Final_solution::create_base(int i){
+QVBoxLayout* Final_solution::create_base(int i, QWidget* parent){
     QVBoxLayout* base = new QVBoxLayout;
     base->setSpacing(0);
     base->setContentsMargins(0, 0, 0, 0);
-    base->addWidget(create_label(i));
-    base->addWidget(init_table(i));
-    base->addWidget(create_info(i));
+    base->addWidget(create_label(i));//
+    base->addWidget(init_table(i));//
+    base->addWidget(create_info(i));//
     return base;
 }
 
 void Final_solution::display_table() {
     for (int i = 0; i < iterations.size(); i++) {
-        QHBoxLayout* spacers = new QHBoxLayout;
+        QHBoxLayout* spacers = new QHBoxLayout();
         spacers->setSpacing(0);
         spacers->setContentsMargins(0, 0, 0, 0);
 
@@ -264,7 +264,7 @@ void Final_solution::display_table() {
         QSpacerItem* rightSpacer = new QSpacerItem(50, 0, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         spacers->addSpacerItem(leftSpacer);
-        spacers->addLayout(create_base(i));
+        spacers->addLayout(create_base(i));//aqui debug
         spacers->addSpacerItem(rightSpacer);
 
         display_layout->addLayout(spacers);
@@ -287,8 +287,4 @@ void Final_solution::clear() {
     iterations.clear();
     inputs.clear();
     outputs.clear();
-    if (display_layout) {
-        qDeleteAll(display_layout->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly));
-    }
 }
-///HAY UNA FUGA DE MEMORIA MUY IMPORTANTE QUE VER!!!!!!!!!!!!!!!!!!
