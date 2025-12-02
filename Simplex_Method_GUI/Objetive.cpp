@@ -70,6 +70,9 @@ void Objetive::clear_boxes_z() {
 		z_layout->removeWidget(box);
 		delete box;
 	}
+	while (QLayoutItem* item = z_layout->takeAt(0)) {
+		delete item;
+	}
 	z_list.clear();
 }
 
