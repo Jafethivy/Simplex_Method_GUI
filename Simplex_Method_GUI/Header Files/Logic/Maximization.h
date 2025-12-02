@@ -2,9 +2,9 @@
 #include "Iteration.h"
 class Matrix;
 
-void start_maximization(Matrix& m, callback_itr callback = nullptr);
+bool start_maximization(Matrix& m, callback_itr callback = nullptr);
 
-void pivoting(Matrix& m, Iteration& itr);
+void pivoting(Matrix& m, Iteration& itr, bool& unbounded);
 
 void define_z(Matrix& m);
 void fill_slack(Matrix& m);
