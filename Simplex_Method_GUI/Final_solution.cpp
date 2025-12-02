@@ -217,6 +217,9 @@ void Final_solution::style_table(QTableWidget* table, QStringList cols_str, QStr
     font.setPointSize(12);
     table->setFont(font);
 
+    table->horizontalHeader()->setObjectName("hHeader");
+    table->verticalHeader()->setObjectName("vHeader");
+
     table->horizontalHeader()->setFont(font);
     table->verticalHeader()->setFont(font);
 
@@ -230,12 +233,52 @@ void Final_solution::style_table(QTableWidget* table, QStringList cols_str, QStr
         QTableWidget {
             color: #000000;
             gridline-color: #000000;
+	        border: 2px solid #000000;
+            border-radius: 8px; 
+            background-color: white;
         }
-    
-        QHeaderView::section {
+
+        QHeaderView#hHeader::section {
+            background-color: white;
+            color: #000000;
+	        border: 1px solid #000000;
+            border-left:none;
+        }
+        
+        QHeaderView#hHeader::section:first {
             background-color: white;
             color: #000000;
             border: 1px solid #000000;
+        }
+
+        QHeaderView#hHeader::section:last {
+            background-color: white;
+            color: #000000;
+            border: 1px solid #000000;
+            border-left:none;
+            border-top-right-radius: 7px;
+        }
+
+
+        QHeaderView#vHeader::section {
+            background-color: white;
+            color: #000000;
+            border: 1px solid #000000;
+        }
+
+        QHeaderView#vHeader::section {
+            background-color: white;
+            color: #000000;
+	        border: 1px solid #000000;
+            border-bottom:none;
+        }
+
+        QHeaderView#vHeader::section:last{
+            background-color: white;
+            color: #000000;
+            border: 1px solid #000000;
+            border-bottom:1px solid #000000;
+            border-bottom-left-radius: 7px;
         }
     
         QTableWidget::item {

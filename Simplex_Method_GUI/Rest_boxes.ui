@@ -107,7 +107,8 @@ border: none;
      </property>
      <property name="styleSheet">
       <string notr="true">color: #000000;
-border:  1px solid #00171F;</string>
+border:  1px solid #00171F;
+border-radius: 9px;</string>
      </property>
      <property name="alignment">
       <set>Qt::AlignmentFlag::AlignCenter</set>
