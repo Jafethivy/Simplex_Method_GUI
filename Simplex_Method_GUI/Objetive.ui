@@ -424,7 +424,7 @@ border: 1px solid #00171F;</string>
                   <string notr="true">color: #000000</string>
                  </property>
                  <property name="text">
-                  <string>Funcion Z:</string>
+                  <string>Función Z:</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>

@@ -1,4 +1,4 @@
-#include "Final_solution.h"
+﻿#include "Final_solution.h"
 #include <Vector>
 #include <QHeaderView>
 
@@ -96,7 +96,7 @@ QTableWidget* Final_solution::create_table(int n, QWidget* parent) { // CREA LA 
 }
 
 QLabel* Final_solution::create_label(int i, QWidget* parent) { // LO DE ARRIBA DE LA TABLA
-    QString name = QString("Iteracion n.%1").arg(i);
+    QString name = QString("Iteración n.%1").arg(i);
     if (i == 0) {
         name = QString("Matriz Inicial");
     }
