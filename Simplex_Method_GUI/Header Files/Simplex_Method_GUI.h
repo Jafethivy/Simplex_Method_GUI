@@ -29,6 +29,9 @@ public:
 
 	void new_problem();
 	void edit_problem();
+	void exceptions();
+
+	void showError(const QString& title, const QString& message);
 
 	QVector<Iteration> itr_getter();
 private:

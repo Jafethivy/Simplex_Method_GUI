@@ -10,6 +10,7 @@ Final_solution::Final_solution(QWidget* parent)
     display_layout->setSpacing(0);
     display_layout->setContentsMargins(0, 0, 0, 0);
 
+    // LA FUNCION INICIAL ES DISPLAY TABLE
 }
 
 Final_solution::~Final_solution() {}
@@ -24,7 +25,7 @@ void Final_solution::set_itr_values(QVector<Iteration> itr) {
     iterations = itr;
 }
 
-QTableWidget* Final_solution::create_table(int n, QWidget* parent) {
+QTableWidget* Final_solution::create_table(int n, QWidget* parent) { // CREA LA TABLA (IMPORTANTE)
     QTableWidget* table = new QTableWidget(parent);
 
     //Columns
@@ -94,16 +95,16 @@ QTableWidget* Final_solution::create_table(int n, QWidget* parent) {
 	return table;
 }
 
-QLabel* Final_solution::create_label(int i, QWidget* parent) {
+QLabel* Final_solution::create_label(int i, QWidget* parent) { // LO DE ARRIBA DE LA TABLA
     QString name = QString("Iteracion n.%1").arg(i);
     if (i == 0) {
         name = QString("Matriz Inicial");
     }
     QLabel* tituloLabel = new QLabel(name, parent);
-    QFont font("Candara", 16);
+    QFont font("Candara", 16); // AQUI EL TIPO DE LETRA Y SIZE
     font.setStyleStrategy(QFont::PreferAntialias);
     tituloLabel->setFont(font);
-    tituloLabel->setStyleSheet(
+    tituloLabel->setStyleSheet( // AQUI EL STYLESHEET
         "QLabel {"
         "   background-color: #FFFFFF;" 
         "   color: #000000;"              
@@ -113,7 +114,7 @@ QLabel* Final_solution::create_label(int i, QWidget* parent) {
     return tituloLabel;
 }
 
-QLabel* Final_solution::create_info(int i, QWidget* parent) {
+QLabel* Final_solution::create_info(int i, QWidget* parent) { // LA INFO DE ABAJO
     QString text = "";
     if (i + 1 < static_cast<int>(iterations.size())) {
         text += QString("Ingresa la variable ");
@@ -137,14 +138,15 @@ QLabel* Final_solution::create_info(int i, QWidget* parent) {
     return label;
 }
 
-QTableWidget* Final_solution::init_table(int i, QWidget* parent) {
-    QTableWidget* table = create_table(i, parent);
-    Iteration& itr = iterations[i];
+QTableWidget* Final_solution::init_table(int i, QWidget* parent) { // INICIALIZA DATOS DE LA TABLA
+    QTableWidget* table = create_table(i, parent); // CREA LA TABLA SIN DATOS, CHECAR LA FUNCION ARRIBA
+
+    Iteration& itr = iterations[i]; // COSAS IMPORTANTES
     std::vector<double> data = itr.table;
     QVector<double> qdata(data.begin(), data.end());
    
 
-    table->setUpdatesEnabled(false);
+    table->setUpdatesEnabled(false); // DESACTIVA LA TABLA PARA EFICIENCIA DE INTRODUCCION DE DATOS
 
     for (int row = 0; row < rows; row++) {
         for (int col = 0; col < cols; col++) {
@@ -154,6 +156,8 @@ QTableWidget* Final_solution::init_table(int i, QWidget* parent) {
                 double value = qdata[indx];
                 QString text = QString::number(value, 'f', 2);
                 QTableWidgetItem* item = new QTableWidgetItem(text);
+
+                //TODO ESTO SOLO METE DATOS
 
                 if (i + 1 < static_cast<int>(iterations.size())) {
                     Iteration& itr_next = iterations[i + 1];
@@ -175,7 +179,7 @@ QTableWidget* Final_solution::init_table(int i, QWidget* parent) {
 
     table_size(table);
 
-    table->setUpdatesEnabled(true);
+    table->setUpdatesEnabled(true); // ACTIVA LA TABLA
 
     return table;
 }
@@ -244,18 +248,19 @@ void Final_solution::style_table(QTableWidget* table, QStringList cols_str, QStr
     table->setEditTriggers(QAbstractItemView::NoEditTriggers);
 }
 
-QVBoxLayout* Final_solution::create_base(int i, QWidget* parent){
+QVBoxLayout* Final_solution::create_base(int i, QWidget* parent){ // ESTA FUNCION CREA TODO
     QVBoxLayout* base = new QVBoxLayout;
     base->setSpacing(0);
     base->setContentsMargins(0, 0, 0, 0);
-    base->addWidget(create_label(i, parent));
-    base->addWidget(init_table(i, parent));
-    base->addWidget(create_info(i, parent));
+    base->addWidget(create_label(i, parent)); // ESTO ES EL LABEL DE ARRIBA QUE DICE QUE TABLA ES
+    base->addWidget(init_table(i, parent)); // ESTO ES LA TABLA
+    base->addWidget(create_info(i, parent)); // ESTO CREA LA INFO DE ABAJO DE LA TABLA
     return base;
 }
 
-void Final_solution::display_table() {
+void Final_solution::display_table() { // inicia todos los datos a mostrar
 
+    //Manejo de errores no voy a explicar pq es mucho
     qDeleteAll(ui.Solution_container->findChildren<QWidget*>(QString(), Qt::FindDirectChildrenOnly));
 
     while (QLayoutItem* item = display_layout->takeAt(0)) {
@@ -265,6 +270,7 @@ void Final_solution::display_table() {
         delete item;
     }
 
+    //Crea la cantidad de tablas que se mostraran
     for (int i = 0; i < iterations.size(); i++) {
         QHBoxLayout* spacers = new QHBoxLayout;
         spacers->setSpacing(0);
@@ -274,23 +280,24 @@ void Final_solution::display_table() {
         QSpacerItem* rightSpacer = new QSpacerItem(50, 0, QSizePolicy::Preferred, QSizePolicy::Minimum);
 
         spacers->addSpacerItem(leftSpacer);
-        spacers->addLayout(create_base(i, ui.Solution_container));
+        spacers->addLayout(create_base(i, ui.Solution_container));//CREATE_BASE ES UNA FUNCION QUE GENERA TODO LO NECESARIO (CHECAR LA FUNCION)
         spacers->addSpacerItem(rightSpacer);
 
         display_layout->addLayout(spacers);
     }
 }
 
-void Final_solution::on_Editar_button_clicked() {
-    emit signal_previous_window(1);
-    emit signal_edit_problem();
+void Final_solution::on_Editar_button_clicked() { // QUE HACE EL BOTON DE EDITAR
+    emit signal_previous_window(1); 
+    emit signal_edit_problem(); // SU SIGNAL CORRESPONDIENTE EN SMG.cpp
 }
 
-void Final_solution::on_New_button_clicked() {
+void Final_solution::on_New_button_clicked() { // QUE HACE EL BOTON DE NUEVO PROBLEMA
     emit signal_previous_window(0);
-    emit signal_new_problem();
+    emit signal_new_problem(); // SU SIGNAL CORRESPONDIENTE EN SMG.cpp
 }
 
+//LIMPIEZA
 void Final_solution::clear() {
     vars_in.clear();
     rest_in.clear();

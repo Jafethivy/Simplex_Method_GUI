@@ -8,7 +8,6 @@ class Matrix {
 private:
     std::vector<double> tabla;
     int rows, cols, variables, restrictions;
-    std::string objetive;
 	int iteration = 0;
 
     // Acceso interno inline
@@ -44,4 +43,6 @@ public:
 
     // Utilidades
     void print_matrix() const;
+
+    void clear_matrix();
 };

@@ -2,9 +2,9 @@
 #include "Iteration.h"
 class Matrix;
 
-void start_minimization(Matrix& m, callback_itr callback = nullptr);
+bool start_minimization(Matrix& m, callback_itr callback = nullptr);
 
-void pivoting_min(Matrix& m, Iteration& itr);
+void pivoting_min(Matrix& m, Iteration& itr, bool& unbounded);
 
 void fill_slack_min(Matrix& m);
 void fill_i_min(Matrix& m);
