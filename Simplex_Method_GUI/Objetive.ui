@@ -320,6 +320,7 @@ QScrollArea QWidget {
                  </property>
                  <property name="styleSheet">
                   <string notr="true">color: #000000;
+background-color: #FFFFFF;
 border: 1px solid #00171F;</string>
                  </property>
                  <property name="currentText">
@@ -445,7 +446,7 @@ border: 1px solid #00171F;</string>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">border: 1px solid #007EA7;</string>
+                  <string notr="true">border: none;</string>
                  </property>
                 </widget>
                </item>
@@ -548,7 +549,7 @@ border: 1px solid #00171F;</string>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">border: 1px solid #007EA7;</string>
+                  <string notr="true">border:none;</string>
                  </property>
                 </widget>
                </item>

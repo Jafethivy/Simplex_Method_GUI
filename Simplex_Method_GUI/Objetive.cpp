@@ -52,7 +52,7 @@ bool Objetive::get_objetive() {
 void Objetive::create_boxes_z(int amount_boxes) { // esto crea las cajas en Func Z
 	clear_boxes_z(); // Limpia cajas anteriores
 	set_amount_boxes(amount_boxes); //Define la cantidad de cajas
-
+	z_layout->addStretch();
 	for (int i = 0; i < amount_boxes; i++) { // todo esto crea caja por caja
 		Boxes* box = new Boxes(QString("x_%1").arg(i+1), this);
 		if (i == amount_boxes - 1) {
@@ -61,6 +61,7 @@ void Objetive::create_boxes_z(int amount_boxes) { // esto crea las cajas en Func
 		z_layout->insertWidget(z_layout->count(), box);
 		z_list.append(box);
 	}
+	z_layout->addStretch();
 	ui.Func_z_container->adjustSize();
 }
 
@@ -83,8 +84,8 @@ void Objetive::create_boxes_rest(int amount_boxes, int amount_rest) { // esto cr
 		r_layout = new QHBoxLayout();
 		r_layout->setSpacing(0);
 		r_layout->setContentsMargins(0, 0, 0, 0);
+		r_layout->addStretch();
 
-		
 		for (int i = 0; i < amount_boxes; i++) {
 			Boxes* box = new Boxes(QString("x_%1").arg(i + 1), this);
 			if (i == amount_boxes - 1) {
@@ -96,6 +97,7 @@ void Objetive::create_boxes_rest(int amount_boxes, int amount_rest) { // esto cr
 		
 		Rest_boxes* rest_box = new Rest_boxes(this);
 		r_layout->insertWidget(r_layout->count(), rest_box);
+		r_layout->addStretch();
 		rest_list.append(rest_box);
 		r2_layout->addLayout(r_layout);
 	}
